@@ -134,7 +134,7 @@ public class TestEleAnnotation implements ProcessingService
               score = parts[1];
             }
             Annotation a = view.newAnnotation(id, Uri.TOKEN, start, end);
-            a.addFeature(Features.Token.TYPE, type);
+//            a.addFeature(Features.Token.WORD, type);
             a.addFeature("line", parts[3]);
             a.addFeature("score", score);
           }
@@ -142,7 +142,6 @@ public class TestEleAnnotation implements ProcessingService
           // TODO Auto-generated catch block
           e.printStackTrace();
         }
-        
         
         
 //        String[] words = text.trim().split("\\s+");
