@@ -135,7 +135,7 @@ public class TestEleAnnotation implements ProcessingService
             }
             Annotation a = view.newAnnotation(id, Uri.TOKEN, start, end);
             a.addFeature("type", type);
-            a.addFeature("line", line);
+            a.addFeature("sentence", parts[3]);
             a.addFeature("score", score);
           }
         } catch (Exception e) {
