@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="4cae2c49-280c-4990-b503-87602e1ab126" activeEnvironment="Default" name="pi2-TokenAnnotation" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="602d2179-6a5a-465a-b0e2-c6548c6c2b7d" wsaVersion="NONE" name="TokenAnnotationSoapBinding" type="wsdl" bindingName="{http://localhost:8080/pi2-tzhong/services/TokenAnnotation}TokenAnnotationSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/pi2-tzhong/services/TokenAnnotation?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/pi2-tzhong/services/TokenAnnotation?wsdl"><con:part><con:url>http://localhost:8080/pi2-tzhong/services/TokenAnnotation?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://localhost:8080/pi2-tzhong/services/TokenAnnotation" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://localhost:8080/pi2-tzhong/services/TokenAnnotation" xmlns:intf="http://localhost:8080/pi2-tzhong/services/TokenAnnotation" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+  <wsdl:message name="getMetadataResponse">
+    <wsdl:part name="getMetadataReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getMetadataRequest"></wsdl:message>
+  <wsdl:message name="executeRequest">
+    <wsdl:part name="input" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="executeResponse">
+    <wsdl:part name="executeReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:portType name="TokenAnnotation">
+    <wsdl:operation name="execute" parameterOrder="input">
+      <wsdl:input message="impl:executeRequest" name="executeRequest"/>
+      <wsdl:output message="impl:executeResponse" name="executeResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getMetadata">
+      <wsdl:input message="impl:getMetadataRequest" name="getMetadataRequest"/>
+      <wsdl:output message="impl:getMetadataResponse" name="getMetadataResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TokenAnnotationSoapBinding" type="impl:TokenAnnotation">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="execute">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="executeRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://proxy.sun.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="executeResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/pi2-tzhong/services/TokenAnnotation" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMetadata">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getMetadataRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://proxy.sun.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="getMetadataResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/pi2-tzhong/services/TokenAnnotation" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TokenAnnotationService">
+    <wsdl:port binding="impl:TokenAnnotationSoapBinding" name="TokenAnnotation">
+      <wsdlsoap:address location="http://localhost:8080/pi2-tzhong/services/TokenAnnotation"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/pi2-tzhong/services/TokenAnnotation</con:endpoint></con:endpoints><con:operation id="2df24afa-9809-4d24-8758-9cbf7cec5995" isOneWay="false" action="" name="execute" bindingOperationName="execute" type="Request-Response" outputName="executeResponse" inputName="executeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="be00d7ef-f359-4be5-a742-9edefa9b1774" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/pi2-tzhong/services/TokenAnnotation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prox="http://proxy.sun.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prox:execute soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <input xsi:type="xsd:string">
+{
+    "discriminator":"http://vocab.lappsgrid.org/ns/media/text",
+    "payload": "Goodbye cruel world I am leaving you today."
+}
+         </input>
+      </prox:execute>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:8080/pi2-tzhong/services/TokenAnnotation/TokenAnnotation/executeRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="40fd7829-020d-407c-bd30-f0fcd40b371b" isOneWay="false" action="" name="getMetadata" bindingOperationName="getMetadata" type="Request-Response" outputName="getMetadataResponse" inputName="getMetadataRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fbba630d-f8c0-417a-9517-9d8525790d8f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/pi2-tzhong/services/TokenAnnotation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prox="http://proxy.sun.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prox:getMetadata soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:8080/pi2-tzhong/services/TokenAnnotation/TokenAnnotation/getMetadataRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
