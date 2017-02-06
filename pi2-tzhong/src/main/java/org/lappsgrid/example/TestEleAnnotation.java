@@ -111,6 +111,7 @@ public class TestEleAnnotation implements ProcessingService
 
         // Step #5: Tokenize the text and add annotations.
         String text = container.getText();
+        
 //        BufferedReader bf;
 //        String line;
 //        try {
