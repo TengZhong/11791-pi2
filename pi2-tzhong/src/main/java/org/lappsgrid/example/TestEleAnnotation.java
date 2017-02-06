@@ -1,6 +1,7 @@
 package org.lappsgrid.example;
 
 import org.lappsgrid.api.ProcessingService;
+import org.lappsgrid.discriminator.Discriminators.Uri;
 
 import static org.lappsgrid.discriminator.Discriminators.Uri;
 import org.lappsgrid.serialization.Data;
@@ -111,24 +112,37 @@ public class TestEleAnnotation implements ProcessingService
 
         // Step #5: Tokenize the text and add annotations.
         String text = container.getText();
-        BufferedReader bf;
-        String line;
-        try {
-          bf = new BufferedReader(new FileReader(text));
-          while ((line = bf.readLine()) != null) {
-            Annotation a = view.newAnnotation(line, Uri.TOKEN);
-            a.addFeature(Features.Token.WORD, line);
-          }
-        } catch (Exception e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
+//        BufferedReader bf;
+//        String line;
+//        try {
+//          bf = new BufferedReader(new FileReader(text));
+//          while ((line = bf.readLine()) != null) {
+//            Annotation a = view.newAnnotation(line, Uri.TOKEN);
+//            a.addFeature(Features.Token.WORD, line);
+//          }
+//        } catch (Exception e) {
+//          // TODO Auto-generated catch block
+//          e.printStackTrace();
+//        }
+        
+        String[] words = text.trim().split("\\s+");
+        int id = -1;
+        int start = 0;
+        for (String word : words) {
+            start = text.indexOf(word, start);
+            if (start < 0) {
+                return new Data<String>(Uri.ERROR, "Unable to match word: " + word).asJson();
+            }
+            int end = start + word.length();
+            Annotation a = view.newAnnotation("tok" + (++id), Uri.TOKEN, start, end);
+            a.addFeature(Features.Token.WORD, word);
         }
                 
 
         // Step #6: Update the view's metadata. Each view contains metadata about the
         // annotations it contains, in particular the name of the tool that produced the
         // annotations.
-        view.addContains(Uri.TOKEN, this.getClass().getName(), "whitespace");
+        view.addContains(Uri.TOKEN, this.getClass().getName(), "TestEleAnnotation");
 
         // Step #7: Create a DataContainer with the result.
         data = new DataContainer(container);
