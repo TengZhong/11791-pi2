@@ -1,0 +1,6 @@
+Q John loves Mary? 
+A1 1 John loves Mary with all his heart. 
+A2 1 Mary is dearly loved by John. 
+A3 0 Mary doesn't love John. 
+A4 0 John doesn't love Mary. 
+A5 1 John loves Mary.
