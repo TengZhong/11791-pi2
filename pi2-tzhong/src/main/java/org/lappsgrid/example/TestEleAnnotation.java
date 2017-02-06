@@ -123,8 +123,7 @@ public class TestEleAnnotation implements ProcessingService
           // TODO Auto-generated catch block
           e.printStackTrace();
         }
-        
-        
+                
 
         // Step #6: Update the view's metadata. Each view contains metadata about the
         // annotations it contains, in particular the name of the tool that produced the
