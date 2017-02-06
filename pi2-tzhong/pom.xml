@@ -3,5 +3,27 @@
   <groupId>org.lappsgrid</groupId>
   <artifactId>pi2-tzhong</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <!-- inheritance info -->
+  <parent>
+        <artifactId>war-parent-pom</artifactId>
+        <groupId>org.lappsgrid.maven</groupId>
+        <version>2.0.5</version>
+  </parent>
+  <dependencies>
+   <dependency>
+    <groupId>org.lappsgrid</groupId>
+    <artifactId>all</artifactId>
+    <version>2.3.1</version>
+   </dependency>
+  </dependencies>
   <packaging>war</packaging>
+  <build>
+   <plugins>
+    <plugin>
+     <groupId>org.eclipse.jetty</groupId>
+     <artifactId>jetty-maven-plugin</artifactId>
+     <version>9.4.2-SNAPSHOT</version>
+  </plugin>
+   </plugins>
+  </build>
 </project>
