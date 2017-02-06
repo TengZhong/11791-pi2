@@ -114,11 +114,29 @@ public class TestEleAnnotation implements ProcessingService
         
         BufferedReader bf;
         String line;
+        String id, type, score;
+        int start, end;
         try {
           bf = new BufferedReader(new FileReader(text));
           while ((line = bf.readLine()) != null) {
-            Annotation a = view.newAnnotation(line, Uri.TOKEN);
+            String[] parts = line.split(" ", 3);
+            if (parts[0].equals("Q")) {
+              type = "Question";
+              id = "Question";
+              start = line.indexOf(parts[1]);
+              end = line.length();
+              score = "-1";
+            } else {
+              type = "Answer";
+              id = "Answer" + parts[0].substring(0);
+              start = line.indexOf(parts[2]);
+              end = line.length();
+              score = parts[1];
+            }
+            Annotation a = view.newAnnotation(id, Uri.TOKEN, start, end);
+            a.addFeature(Features.Token.WORD, type);
             a.addFeature(Features.Token.WORD, line);
+            a.addFeature(Features.Token.WORD, score);
           }
         } catch (Exception e) {
           // TODO Auto-generated catch block
