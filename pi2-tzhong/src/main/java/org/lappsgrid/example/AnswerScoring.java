@@ -1,8 +1,8 @@
 package org.lappsgrid.example;
 
 import org.lappsgrid.api.ProcessingService;
+import org.lappsgrid.discriminator.Discriminators.Uri;
 
-import static org.lappsgrid.discriminator.Discriminators.Uri;
 import org.lappsgrid.serialization.Data;
 import org.lappsgrid.serialization.DataContainer;
 import org.lappsgrid.serialization.Serializer;
@@ -15,7 +15,10 @@ import org.lappsgrid.vocabulary.Features;
 import org.lappsgrid.metadata.IOSpecification;
 import org.lappsgrid.metadata.ServiceMetadata;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * For tutorial step #3, writing getMetadata()
@@ -103,28 +106,64 @@ public class AnswerScoring implements ProcessingService
             return new Data<String>(Uri.ERROR, message).asJson();
         }
 
-        // Step #4: Create a new View
-        View view = container.newView();
-
-        // Step #5: Tokenize the text and add annotations.
-        String text = container.getText();
-        String[] words = text.trim().split("\\s+");
-        int id = -1;
-        int start = 0;
-        for (String word : words) {
-            start = text.indexOf(word, start);
-            if (start < 0) {
-                return new Data<String>(Uri.ERROR, "Unable to match word: " + word).asJson();
-            }
-            int end = start + word.length();
-            Annotation a = view.newAnnotation("tok" + (++id), Uri.TOKEN, start, end);
-            a.addFeature(Features.Token.WORD, word);
+        // Step #4#5: Create a new View
+        View view2 = container.getView(2); // from NGramAnnotation
+        View view3 = container.newView();
+        try {
+          List<Annotation> annotations = view2.getAnnotations();
+          
+          // extract info about the question
+          Annotation questionAnnotation = annotations.get(0);
+          String sentence = questionAnnotation.getId();
+          Set<String> qGram1 = questionAnnotation.getFeatureSet("1-gram");
+          Set<String> qGram2 = questionAnnotation.getFeatureSet("2-gram");
+          Set<String> qGram3 = questionAnnotation.getFeatureSet("3-gram");
+          Annotation q_tmp = view3.newAnnotation(sentence, Uri.TOKEN);
+          q_tmp.addFeature("qGram1", qGram1);
+          q_tmp.addFeature("qGram2", qGram2);
+          q_tmp.addFeature("qGram3", qGram3);
+          
+          // get scores for each answers
+          int len = annotations.size();
+          for (int i = 1; i < len; i++) {
+            Annotation tmpAnnotation = annotations.get(i);
+            String tmpSentence = tmpAnnotation.getId();
+            Set<String> tmpGram1 = tmpAnnotation.getFeatureSet("1-gram");
+            Set<String> tmpGram2 = tmpAnnotation.getFeatureSet("2-gram");
+            Set<String> tmpGram3 = tmpAnnotation.getFeatureSet("3-gram");
+            
+            Set<String> intersection1 = new HashSet<String>(tmpGram1), union1 = 
+                    new HashSet<String>(tmpGram1);
+            intersection1.retainAll(qGram1);
+            union1.addAll(qGram1);
+            Set<String> intersection2 = new HashSet<String>(tmpGram2), union2 = 
+                    new HashSet<String>(tmpGram2);
+            intersection2.retainAll(qGram2);
+            union2.addAll(qGram2);
+            Set<String> intersection3 = new HashSet<String>(tmpGram3), union3 = 
+                    new HashSet<String>(tmpGram3);
+            intersection3.retainAll(qGram3);
+            union3.addAll(qGram3);
+            
+            float gram1Score = (float)intersection1.size() / union1.size();
+            float gram2Score = (float)intersection2.size() / union2.size();
+            float gram3Score = (float)intersection3.size() / union3.size();
+            
+            Annotation ans_tmp = view3.newAnnotation(tmpSentence, Uri.TOKEN);
+            ans_tmp.addFeature("gram1Score", gram1Score + "");
+            ans_tmp.addFeature("gram1Score", gram1Score + "");
+            ans_tmp.addFeature("gram1Score", gram1Score + "");
+          }
+        } catch (Exception e) {
+          System.out.println(e.getStackTrace());
         }
+        
+           
 
         // Step #6: Update the view's metadata. Each view contains metadata about the
         // annotations it contains, in particular the name of the tool that produced the
         // annotations.
-        view.addContains(Uri.TOKEN, this.getClass().getName(), "whitespace");
+        view3.addContains(Uri.TOKEN, this.getClass().getName(), "whitespace");
 
         // Step #7: Create a DataContainer with the result.
         data = new DataContainer(container);
