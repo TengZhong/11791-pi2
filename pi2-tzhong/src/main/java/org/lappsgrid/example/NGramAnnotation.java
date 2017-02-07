@@ -122,11 +122,20 @@ public class NGramAnnotation implements ProcessingService
           for (String word : words) {
             gram1.add(word);
           }
+          // 2-gram
+          for (int i = 0; i < len - 1; i++) {
+            String tmp = words[i] + " " + words[i + 1];
+            gram2.add(tmp);
+          }
+          // 3-gram
+          for (int i = 0; i < len - 2; i++) {
+            String tmp = words[i] + " " + words[i + 1] + " " + words[i + 2];
+            gram3.add(tmp);
+          }
           Annotation tmpa = view2.newAnnotation(sentence, Uri.TOKEN);
           tmpa.addFeature("1-gram", gram1);
-          
-          
-          
+          tmpa.addFeature("2-gram", gram2);
+          tmpa.addFeature("3-gram", gram3);
         }
 
         
