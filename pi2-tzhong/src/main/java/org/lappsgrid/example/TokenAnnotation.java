@@ -110,7 +110,7 @@ public class TokenAnnotation implements ProcessingService
         List<Annotation> annotations = view.getAnnotations();
         for (Annotation a: annotations) {
           String sentence = a.getFeature("Sentence");
-          String[] words = sentence.trim().split("\\s+");
+          String[] words = sentence.trim().replaceAll("[-+.^:,?]", "").split("\\s+");
           int id = -1;
           int start = 0;
           for (String word : words) {
