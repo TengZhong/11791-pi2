@@ -113,7 +113,8 @@ public class Evaluation implements ProcessingService
         View view4 = container.newView();
         List<Annotation> annotations = view3.getAnnotations();
         int len = annotations.size(), N = 0; // N is number of correct documents
-        PriorityQueue<Annotation> pq = new PriorityQueue<Annotation>((Collection<? extends Annotation>) new myComparator());
+        myComparator cpm = new myComparator();
+        PriorityQueue<Annotation> pq = new PriorityQueue<Annotation>(len, cpm);
         for (int i = 1; i < len; i++) { // skip the question
           Annotation tmpAnnotation = annotations.get(i);
           if (Integer.parseInt(tmpAnnotation.getFeature("Score")) == 1) {
