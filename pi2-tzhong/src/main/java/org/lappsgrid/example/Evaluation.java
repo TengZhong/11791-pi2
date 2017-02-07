@@ -146,7 +146,7 @@ public class Evaluation implements ProcessingService
     
     
     
-    private class myComparator<Annotation> implements Comparator<Annotation> {
+    private class myComparator implements Comparator<Annotation> {
       @Override
       public int compare(Annotation a1, Annotation a2) {
         float f1 = Float.parseFloat(((org.lappsgrid.serialization.lif.Annotation) a1).getFeature("sum of score"));
