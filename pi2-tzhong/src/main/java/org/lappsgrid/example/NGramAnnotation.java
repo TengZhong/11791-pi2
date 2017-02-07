@@ -1,8 +1,8 @@
 package org.lappsgrid.example;
 
 import org.lappsgrid.api.ProcessingService;
+import org.lappsgrid.discriminator.Discriminators.Uri;
 
-import static org.lappsgrid.discriminator.Discriminators.Uri;
 import org.lappsgrid.serialization.Data;
 import org.lappsgrid.serialization.DataContainer;
 import org.lappsgrid.serialization.Serializer;
@@ -15,6 +15,8 @@ import org.lappsgrid.vocabulary.Features;
 import org.lappsgrid.metadata.IOSpecification;
 import org.lappsgrid.metadata.ServiceMetadata;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -103,28 +105,36 @@ public class NGramAnnotation implements ProcessingService
             return new Data<String>(Uri.ERROR, message).asJson();
         }
 
-        // Step #4: Create a new View
-        View view = container.newView();
-
-        // Step #5: Tokenize the text and add annotations.
-        String text = container.getText();
-        String[] words = text.trim().split("\\s+");
-        int id = -1;
-        int start = 0;
-        for (String word : words) {
-            start = text.indexOf(word, start);
-            if (start < 0) {
-                return new Data<String>(Uri.ERROR, "Unable to match word: " + word).asJson();
-            }
-            int end = start + word.length();
-            Annotation a = view.newAnnotation("tok" + (++id), Uri.TOKEN, start, end);
-            a.addFeature(Features.Token.WORD, word);
+        
+        // Step #4#5: Create a new View
+        View view = container.getView(0);
+        View view2 = container.newView();
+        List<Annotation> annotations = view.getAnnotations();
+        int numSentence = 0;
+        for (Annotation a: annotations) {
+          String sentence = a.getFeature("Sentence").trim().replaceAll("[-+.^:,?]", "");
+          String[] words = sentence.split("\\s+");
+          HashSet<String> gram1 = new HashSet<>();
+          HashSet<String> gram2 = new HashSet<>();
+          HashSet<String> gram3 = new HashSet<>();
+          int len = words.length;
+          // 1-gram
+          for (String word : words) {
+            gram1.add(word);
+          }
+          Annotation tmpa = view2.newAnnotation(sentence, Uri.TOKEN);
+          tmpa.addFeature("1-gram", gram1);
+          
+          
+          
         }
 
+        
+        
         // Step #6: Update the view's metadata. Each view contains metadata about the
         // annotations it contains, in particular the name of the tool that produced the
         // annotations.
-        view.addContains(Uri.TOKEN, this.getClass().getName(), "whitespace");
+        view2.addContains(Uri.TOKEN, this.getClass().getName(), "N-Gram Annotation");
 
         // Step #7: Create a DataContainer with the result.
         data = new DataContainer(container);
