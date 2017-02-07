@@ -113,7 +113,7 @@ public class Evaluation implements ProcessingService
         View view4 = container.newView();
         List<Annotation> annotations = view3.getAnnotations();
         int len = annotations.size(), N = 0; // N is number of correct documents
-        PriorityQueue<Annotation> pq = new PriorityQueue<Annotation>((Collection<? extends org.lappsgrid.serialization.lif.Annotation>) new myComparator());
+        PriorityQueue<Annotation> pq = new PriorityQueue<Annotation>((Collection<? extends Annotation>) new myComparator());
         for (int i = 1; i < len; i++) { // skip the question
           Annotation tmpAnnotation = annotations.get(i);
           if (Integer.parseInt(tmpAnnotation.getFeature("Score")) == 1) {
@@ -144,23 +144,22 @@ public class Evaluation implements ProcessingService
         return data.asPrettyJson();
     }
     
-    
-    
-    private class myComparator implements Comparator<Annotation> {
-      @Override
-      public int compare(Annotation a1, Annotation a2) {
-        float f1 = Float.parseFloat(((org.lappsgrid.serialization.lif.Annotation) a1).getFeature("sum of score"));
-        float f2 = Float.parseFloat(((org.lappsgrid.serialization.lif.Annotation) a2).getFeature("sum of score"));
-        if (f1 < f2) {
-          return 1;
-        } else if (f1 > f2) {
-          return -1;
-        } else {
-          return 0;
-        }
-      }
-    }
-    
-    
+
 }
 
+
+
+class myComparator implements Comparator<Annotation> {
+  @Override
+  public int compare(Annotation a1, Annotation a2) {
+    float f1 = Float.parseFloat(a1.getFeature("sum of score"));
+    float f2 = Float.parseFloat(a2.getFeature("sum of score"));
+    if (f1 < f2) {
+      return 1;
+    } else if (f1 > f2) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+}
