@@ -123,7 +123,8 @@ public class AnswerScoring implements ProcessingService
           q_tmp.addFeature("qGram2", qGram2);
           q_tmp.addFeature("qGram3", qGram3);
           
-          // get scores for each answers
+          // get scores for each answers by calculating the percentage of intersections
+          // of 1-gram, 2-gram and 3-gram
           int len = annotations.size();
           for (int i = 1; i < len; i++) {
             Annotation tmpAnnotation = annotations.get(i);

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="81480a25-9256-465f-8f3a-ba4d5a1ed2ba" activeEnvironment="Default" name="pi2-NGramAnnotation" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="db29559f-e3a7-4d8d-b53c-7395512de4bb" wsaVersion="NONE" name="NGramAnnotationSoapBinding" type="wsdl" bindingName="{http://localhost:8080/pi2-tzhong/services/NGramAnnotation}NGramAnnotationSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/pi2-tzhong/services/NGramAnnotation?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/pi2-tzhong/services/NGramAnnotation?wsdl"><con:part><con:url>http://localhost:8080/pi2-tzhong/services/NGramAnnotation?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://localhost:8080/pi2-tzhong/services/NGramAnnotation" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://localhost:8080/pi2-tzhong/services/NGramAnnotation" xmlns:intf="http://localhost:8080/pi2-tzhong/services/NGramAnnotation" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<con:soapui-project id="25da4eb4-4e9d-4b3b-910d-78e4c889ebf4" activeEnvironment="Default" name="pi2-Evaluation" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="a0aff485-9533-489a-88c8-3cdff4166025" wsaVersion="NONE" name="EvaluationSoapBinding" type="wsdl" bindingName="{http://localhost:8080/pi2-tzhong/services/Evaluation}EvaluationSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/pi2-tzhong/services/Evaluation?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/pi2-tzhong/services/Evaluation?wsdl"><con:part><con:url>http://localhost:8080/pi2-tzhong/services/Evaluation?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://localhost:8080/pi2-tzhong/services/Evaluation" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://localhost:8080/pi2-tzhong/services/Evaluation" xmlns:intf="http://localhost:8080/pi2-tzhong/services/Evaluation" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <!--WSDL created by Apache Axis version: 1.4
 Built on Apr 22, 2006 (06:55:48 PDT)-->
-  <wsdl:message name="getMetadataRequest"></wsdl:message>
-  <wsdl:message name="getMetadataResponse">
-    <wsdl:part name="getMetadataReturn" type="xsd:string"/>
-  </wsdl:message>
   <wsdl:message name="executeResponse">
     <wsdl:part name="executeReturn" type="xsd:string"/>
   </wsdl:message>
   <wsdl:message name="executeRequest">
     <wsdl:part name="input" type="xsd:string"/>
   </wsdl:message>
-  <wsdl:portType name="NGramAnnotation">
+  <wsdl:message name="getMetadataRequest"></wsdl:message>
+  <wsdl:message name="getMetadataResponse">
+    <wsdl:part name="getMetadataReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:portType name="Evaluation">
     <wsdl:operation name="execute" parameterOrder="input">
       <wsdl:input message="impl:executeRequest" name="executeRequest"/>
       <wsdl:output message="impl:executeResponse" name="executeResponse"/>
@@ -22,7 +22,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
       <wsdl:output message="impl:getMetadataResponse" name="getMetadataResponse"/>
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="NGramAnnotationSoapBinding" type="impl:NGramAnnotation">
+  <wsdl:binding name="EvaluationSoapBinding" type="impl:Evaluation">
     <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
     <wsdl:operation name="execute">
       <wsdlsoap:operation soapAction=""/>
@@ -30,7 +30,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
         <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://proxy.sun.com" use="encoded"/>
       </wsdl:input>
       <wsdl:output name="executeResponse">
-        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/pi2-tzhong/services/NGramAnnotation" use="encoded"/>
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/pi2-tzhong/services/Evaluation" use="encoded"/>
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getMetadata">
@@ -39,16 +39,16 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
         <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://proxy.sun.com" use="encoded"/>
       </wsdl:input>
       <wsdl:output name="getMetadataResponse">
-        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/pi2-tzhong/services/NGramAnnotation" use="encoded"/>
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/pi2-tzhong/services/Evaluation" use="encoded"/>
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="NGramAnnotationService">
-    <wsdl:port binding="impl:NGramAnnotationSoapBinding" name="NGramAnnotation">
-      <wsdlsoap:address location="http://localhost:8080/pi2-tzhong/services/NGramAnnotation"/>
+  <wsdl:service name="EvaluationService">
+    <wsdl:port binding="impl:EvaluationSoapBinding" name="Evaluation">
+      <wsdlsoap:address location="http://localhost:8080/pi2-tzhong/services/Evaluation"/>
     </wsdl:port>
   </wsdl:service>
-</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/pi2-tzhong/services/NGramAnnotation</con:endpoint></con:endpoints><con:operation id="684e6d7e-655b-40a1-9040-336e4125794c" isOneWay="false" action="" name="execute" bindingOperationName="execute" type="Request-Response" outputName="executeResponse" inputName="executeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="210b06d4-6fe6-4d4e-93dd-0f150288fecf" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/pi2-tzhong/services/NGramAnnotation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prox="http://proxy.sun.com">
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/pi2-tzhong/services/Evaluation</con:endpoint></con:endpoints><con:operation id="f692e0a6-d3f1-44e8-a651-76d525475104" isOneWay="false" action="" name="execute" bindingOperationName="execute" type="Request-Response" outputName="executeResponse" inputName="executeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1a43d45b-3c1a-48e5-aacf-c2306dd8874f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/pi2-tzhong/services/Evaluation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prox="http://proxy.sun.com">
    <soapenv:Header/>
    <soapenv:Body>
       <prox:execute soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
@@ -384,6 +384,162 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
           "Sentence Number(0 means Question)" : "5"
         }
       } ]
+    }, {
+      "metadata" : {
+        "contains" : {
+          "http://vocab.lappsgrid.org/Token" : {
+            "producer" : "org.lappsgrid.example.NGramAnnotation",
+            "type" : "N-Gram Annotation"
+          }
+        }
+      },
+      "annotations" : [ {
+        "id" : "John loves Mary",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "1-gram" : [ "loves", "John", "Mary" ],
+          "2-gram" : [ "John loves", "loves Mary" ],
+          "3-gram" : [ "John loves Mary" ],
+          "Score" : "-1"
+        }
+      }, {
+        "id" : "John loves Mary with all his heart",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "1-gram" : [ "all", "with", "his", "loves", "John", "heart", "Mary" ],
+          "2-gram" : [ "his heart", "with all", "John loves", "loves Mary", "Mary with", "all his" ],
+          "3-gram" : [ "all his heart", "John loves Mary", "Mary with all", "with all his", "loves Mary with" ],
+          "Score" : "1"
+        }
+      }, {
+        "id" : "Mary is dearly loved by John",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "1-gram" : [ "loved", "by", "John", "is", "dearly", "Mary" ],
+          "2-gram" : [ "is dearly", "by John", "Mary is", "loved by", "dearly loved" ],
+          "3-gram" : [ "loved by John", "dearly loved by", "is dearly loved", "Mary is dearly" ],
+          "Score" : "1"
+        }
+      }, {
+        "id" : "Mary doesn't love John",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "1-gram" : [ "love", "John", "doesn't", "Mary" ],
+          "2-gram" : [ "doesn't love", "love John", "Mary doesn't" ],
+          "3-gram" : [ "doesn't love John", "Mary doesn't love" ],
+          "Score" : "0"
+        }
+      }, {
+        "id" : "John doesn't love Mary",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "1-gram" : [ "love", "John", "doesn't", "Mary" ],
+          "2-gram" : [ "doesn't love", "love Mary", "John doesn't" ],
+          "3-gram" : [ "doesn't love Mary", "John doesn't love" ],
+          "Score" : "0"
+        }
+      }, {
+        "id" : "John loves Mary",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "1-gram" : [ "loves", "John", "Mary" ],
+          "2-gram" : [ "John loves", "loves Mary" ],
+          "3-gram" : [ "John loves Mary" ],
+          "Score" : "1"
+        }
+      } ]
+    }, {
+      "metadata" : {
+        "contains" : {
+          "http://vocab.lappsgrid.org/Token" : {
+            "producer" : "org.lappsgrid.example.AnswerScoring",
+            "type" : "AnswerScoring"
+          }
+        }
+      },
+      "annotations" : [ {
+        "id" : "John loves Mary",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "qGram1" : [ "loves", "John", "Mary" ],
+          "qGram2" : [ "John loves", "loves Mary" ],
+          "qGram3" : [ "John loves Mary" ]
+        }
+      }, {
+        "id" : "John loves Mary with all his heart",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "gram1Score" : "0.42857143",
+          "gram2Score" : "0.33333334",
+          "gram3Score" : "0.2",
+          "sum of score" : "0.96190476",
+          "Score" : "1"
+        }
+      }, {
+        "id" : "Mary is dearly loved by John",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "gram1Score" : "0.2857143",
+          "gram2Score" : "0.0",
+          "gram3Score" : "0.0",
+          "sum of score" : "0.2857143",
+          "Score" : "1"
+        }
+      }, {
+        "id" : "Mary doesn't love John",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "gram1Score" : "0.4",
+          "gram2Score" : "0.0",
+          "gram3Score" : "0.0",
+          "sum of score" : "0.4",
+          "Score" : "0"
+        }
+      }, {
+        "id" : "John doesn't love Mary",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "gram1Score" : "0.4",
+          "gram2Score" : "0.0",
+          "gram3Score" : "0.0",
+          "sum of score" : "0.4",
+          "Score" : "0"
+        }
+      }, {
+        "id" : "John loves Mary",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "gram1Score" : "1.0",
+          "gram2Score" : "1.0",
+          "gram3Score" : "1.0",
+          "sum of score" : "3.0",
+          "Score" : "1"
+        }
+      } ]
     } ]
   },
   "parameters" : { }
@@ -391,9 +547,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </input>
       </prox:execute>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:8080/pi2-tzhong/services/NGramAnnotation/NGramAnnotation/executeRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="572fa21e-1e6f-4200-9204-e188b25d2c2d" isOneWay="false" action="" name="getMetadata" bindingOperationName="getMetadata" type="Request-Response" outputName="getMetadataResponse" inputName="getMetadataRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3d7ce60e-16c4-4b3b-aece-2c9e3d7eb795" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/pi2-tzhong/services/NGramAnnotation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prox="http://proxy.sun.com">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:8080/pi2-tzhong/services/Evaluation/Evaluation/executeRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ef62ab58-4efc-4b26-9aa4-f17a37997283" isOneWay="false" action="" name="getMetadata" bindingOperationName="getMetadata" type="Request-Response" outputName="getMetadataResponse" inputName="getMetadataRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="540b0a60-09e6-429c-8eb5-90e65d0b6445" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/pi2-tzhong/services/Evaluation</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prox="http://proxy.sun.com">
    <soapenv:Header/>
    <soapenv:Body>
       <prox:getMetadata soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:8080/pi2-tzhong/services/NGramAnnotation/NGramAnnotation/getMetadataRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:8080/pi2-tzhong/services/Evaluation/Evaluation/getMetadataRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

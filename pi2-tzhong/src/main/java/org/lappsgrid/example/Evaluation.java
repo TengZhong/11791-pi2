@@ -109,6 +109,7 @@ public class Evaluation implements ProcessingService
 
         
         // Step #4#5: Create a new View
+        // use priority queue to sort sentences and output the precision at N 
         View view3 = container.getView(3); // from AnserScoring
         View view4 = container.newView();
         List<Annotation> annotations = view3.getAnnotations();
@@ -148,6 +149,12 @@ public class Evaluation implements ProcessingService
 
 }
 
+/**
+ * Comparator for priority queue, used for sorting sentence based on the likelihood of
+ *  being an answer
+ * @author zhongteng
+ *
+ */
 class myComparator implements Comparator<Annotation> {
   @Override
   public int compare(Annotation a1, Annotation a2) {

@@ -107,6 +107,7 @@ public class NGramAnnotation implements ProcessingService
 
         
         // Step #4#5: Create a new View
+        // get view from TokenAnnotation, use hashsets to record N-gram
         View view = container.getView(0);
         View view2 = container.newView();
         List<Annotation> annotations = view.getAnnotations();

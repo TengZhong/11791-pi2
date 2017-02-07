@@ -105,6 +105,7 @@ public class TokenAnnotation implements ProcessingService
         }
 
         // Step #4#5: Create a new View and tokenize the previous annotations
+        // get view from TestEleAnnotation for tokenization
         View view = container.getView(0);
         View view1 = container.newView();
         List<Annotation> annotations = view.getAnnotations();

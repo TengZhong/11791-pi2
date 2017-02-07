@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="4cae2c49-280c-4990-b503-87602e1ab126" activeEnvironment="Default" name="pi2-TokenAnnotation" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="602d2179-6a5a-465a-b0e2-c6548c6c2b7d" wsaVersion="NONE" name="TokenAnnotationSoapBinding" type="wsdl" bindingName="{http://localhost:8080/pi2-tzhong/services/TokenAnnotation}TokenAnnotationSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/pi2-tzhong/services/TokenAnnotation?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/pi2-tzhong/services/TokenAnnotation?wsdl"><con:part><con:url>http://localhost:8080/pi2-tzhong/services/TokenAnnotation?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://localhost:8080/pi2-tzhong/services/TokenAnnotation" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://localhost:8080/pi2-tzhong/services/TokenAnnotation" xmlns:intf="http://localhost:8080/pi2-tzhong/services/TokenAnnotation" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<con:soapui-project id="4cae2c49-280c-4990-b503-87602e1ab126" activeEnvironment="Default" name="pi2-TokenAnnotation" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="602d2179-6a5a-465a-b0e2-c6548c6c2b7d" wsaVersion="NONE" name="TokenAnnotationSoapBinding" type="wsdl" bindingName="{http://localhost:8080/pi2-tzhong/services/TokenAnnotation}TokenAnnotationSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/pi2-tzhong/services/TokenAnnotation?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/pi2-tzhong/services/TokenAnnotation?wsdl"><con:part><con:url>http://localhost:8080/pi2-tzhong/services/TokenAnnotation?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://localhost:8080/pi2-tzhong/services/TokenAnnotation" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://localhost:8080/pi2-tzhong/services/TokenAnnotation" xmlns:intf="http://localhost:8080/pi2-tzhong/services/TokenAnnotation" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <!--WSDL created by Apache Axis version: 1.4
 Built on Apr 22, 2006 (06:55:48 PDT)-->
   <wsdl:message name="getMetadataResponse">
@@ -54,8 +54,86 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
       <prox:execute soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
          <input xsi:type="xsd:string">
 {
-    "discriminator":"http://vocab.lappsgrid.org/ns/media/text",
-    "payload": "Goodbye cruel world I am leaving you today."
+  "discriminator" : "http://vocab.lappsgrid.org/ns/media/jsonld#lif",
+  "payload" : {
+    "@context" : "http://vocab.lappsgrid.org/context-1.0.0.jsonld",
+    "metadata" : { },
+    "text" : {
+      "@value" : "q001.txt"
+    },
+    "views" : [ {
+      "metadata" : {
+        "contains" : {
+          "http://vocab.lappsgrid.org/Token" : {
+            "producer" : "org.lappsgrid.example.TestEleAnnotation",
+            "type" : "TestEleAnnotation"
+          }
+        }
+      },
+      "annotations" : [ {
+        "id" : "Question",
+        "start" : 2,
+        "end" : 19,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "Type" : "Question",
+          "Sentence" : "John loves Mary? ",
+          "Score" : "-1"
+        }
+      }, {
+        "id" : "Answer1",
+        "start" : 5,
+        "end" : 41,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "Type" : "Answer",
+          "Sentence" : "John loves Mary with all his heart. ",
+          "Score" : "1"
+        }
+      }, {
+        "id" : "Answer2",
+        "start" : 5,
+        "end" : 35,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "Type" : "Answer",
+          "Sentence" : "Mary is dearly loved by John. ",
+          "Score" : "1"
+        }
+      }, {
+        "id" : "Answer3",
+        "start" : 5,
+        "end" : 29,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "Type" : "Answer",
+          "Sentence" : "Mary doesn't love John. ",
+          "Score" : "0"
+        }
+      }, {
+        "id" : "Answer4",
+        "start" : 5,
+        "end" : 29,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "Type" : "Answer",
+          "Sentence" : "John doesn't love Mary. ",
+          "Score" : "0"
+        }
+      }, {
+        "id" : "Answer5",
+        "start" : 5,
+        "end" : 21,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "Type" : "Answer",
+          "Sentence" : "John loves Mary.",
+          "Score" : "1"
+        }
+      } ]
+    } ]
+  },
+  "parameters" : { }
 }
          </input>
       </prox:execute>
@@ -65,4 +143,4 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <soapenv:Body>
       <prox:getMetadata soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:8080/pi2-tzhong/services/TokenAnnotation/TokenAnnotation/getMetadataRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:8080/pi2-tzhong/services/TokenAnnotation/TokenAnnotation/getMetadataRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
