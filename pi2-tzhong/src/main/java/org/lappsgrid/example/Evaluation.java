@@ -103,28 +103,15 @@ public class Evaluation implements ProcessingService
             return new Data<String>(Uri.ERROR, message).asJson();
         }
 
-        // Step #4: Create a new View
-        View view = container.newView();
-
-        // Step #5: Tokenize the text and add annotations.
-        String text = container.getText();
-        String[] words = text.trim().split("\\s+");
-        int id = -1;
-        int start = 0;
-        for (String word : words) {
-            start = text.indexOf(word, start);
-            if (start < 0) {
-                return new Data<String>(Uri.ERROR, "Unable to match word: " + word).asJson();
-            }
-            int end = start + word.length();
-            Annotation a = view.newAnnotation("tok" + (++id), Uri.TOKEN, start, end);
-            a.addFeature(Features.Token.WORD, word);
-        }
+        // Step #4#5: Create a new View
+        View view3 = container.getView(3); // from AnserScoring
+        View view4 = container.newView();
+        
 
         // Step #6: Update the view's metadata. Each view contains metadata about the
         // annotations it contains, in particular the name of the tool that produced the
         // annotations.
-        view.addContains(Uri.TOKEN, this.getClass().getName(), "whitespace");
+        view4.addContains(Uri.TOKEN, this.getClass().getName(), "Evaluation");
 
         // Step #7: Create a DataContainer with the result.
         data = new DataContainer(container);

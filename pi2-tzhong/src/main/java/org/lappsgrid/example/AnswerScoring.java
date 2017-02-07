@@ -153,6 +153,7 @@ public class AnswerScoring implements ProcessingService
             ans_tmp.addFeature("gram1Score", gram1Score + "");
             ans_tmp.addFeature("gram2Score", gram2Score + "");
             ans_tmp.addFeature("gram3Score", gram3Score + "");
+            ans_tmp.addFeature("sum of score", gram1Score + gram2Score + gram3Score + "");
           }
         } catch (Exception e) {
           System.out.println(e.getStackTrace());
@@ -163,7 +164,7 @@ public class AnswerScoring implements ProcessingService
         // Step #6: Update the view's metadata. Each view contains metadata about the
         // annotations it contains, in particular the name of the tool that produced the
         // annotations.
-        view3.addContains(Uri.TOKEN, this.getClass().getName(), "whitespace");
+        view3.addContains(Uri.TOKEN, this.getClass().getName(), "AnswerScoring");
 
         // Step #7: Create a DataContainer with the result.
         data = new DataContainer(container);
