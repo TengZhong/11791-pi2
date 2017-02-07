@@ -15,6 +15,7 @@ import org.lappsgrid.vocabulary.Features;
 import org.lappsgrid.metadata.IOSpecification;
 import org.lappsgrid.metadata.ServiceMetadata;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -48,7 +49,7 @@ public class TokenAnnotation implements ProcessingService
         // JSON for input information
         IOSpecification requires = new IOSpecification();
         requires.addFormat(Uri.TEXT);           // Plain text (form)
-        requires.addFormat(Uri.LIF);            // LIF (form)
+        requires.addFormat(Uri.LAPPS);            // LIF (form)
         requires.addLanguage("en");             // Source language
         requires.setEncoding("UTF-8");
 
@@ -103,28 +104,31 @@ public class TokenAnnotation implements ProcessingService
             return new Data<String>(Uri.ERROR, message).asJson();
         }
 
-        // Step #4: Create a new View
-        View view = container.newView();
-
-        // Step #5: Tokenize the text and add annotations.
-        String text = container.getText();
-        String[] words = text.trim().split("\\s+");
-        int id = -1;
-        int start = 0;
-        for (String word : words) {
-            start = text.indexOf(word, start);
-            if (start < 0) {
-                return new Data<String>(Uri.ERROR, "Unable to match word: " + word).asJson();
-            }
-            int end = start + word.length();
-            Annotation a = view.newAnnotation("tok" + (++id), Uri.TOKEN, start, end);
-            a.addFeature(Features.Token.WORD, word);
+        // Step #4#5: Create a new View and tokenize the previous annotations
+        View view = container.getView(0);
+        View view1 = container.newView();
+        List<Annotation> annotations = view.getAnnotations();
+        for (Annotation a: annotations) {
+          String sentence = a.getFeature("Score");
+          String[] words = sentence.trim().split("\\s+");
+          int id = -1;
+          int start = 0;
+          for (String word : words) {
+              start = sentence.indexOf(word, start);
+              if (start < 0) {
+                  return new Data<String>(Uri.ERROR, "Unable to match word: " + word).asJson();
+              }
+              int end = start + word.length();
+              Annotation tmpa = view1.newAnnotation("tok" + (++id), Uri.TOKEN, start, end);
+              tmpa.addFeature(Features.Token.WORD, word);
+          }
         }
+
 
         // Step #6: Update the view's metadata. Each view contains metadata about the
         // annotations it contains, in particular the name of the tool that produced the
         // annotations.
-        view.addContains(Uri.TOKEN, this.getClass().getName(), "whitespace");
+        view1.addContains(Uri.TOKEN, this.getClass().getName(), "TokenAnnotation");
 
         // Step #7: Create a DataContainer with the result.
         data = new DataContainer(container);
