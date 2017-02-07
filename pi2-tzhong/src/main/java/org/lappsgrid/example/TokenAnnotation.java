@@ -123,8 +123,8 @@ public class TokenAnnotation implements ProcessingService
               Annotation tmpa = view1.newAnnotation("tok" + (++id), Uri.TOKEN, start, end);
               tmpa.addFeature(Features.Token.WORD, word);
               tmpa.addFeature("Sentence Number(0 means Question)", numSentence + "");
-              numSentence++;
           }
+          numSentence++;
         }
 
 
