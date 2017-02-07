@@ -108,6 +108,7 @@ public class TokenAnnotation implements ProcessingService
         View view = container.getView(0);
         View view1 = container.newView();
         List<Annotation> annotations = view.getAnnotations();
+        int numSentence = 0;
         for (Annotation a: annotations) {
           String sentence = a.getFeature("Sentence");
           String[] words = sentence.trim().replaceAll("[-+.^:,?]", "").split("\\s+");
@@ -121,6 +122,8 @@ public class TokenAnnotation implements ProcessingService
               int end = start + word.length();
               Annotation tmpa = view1.newAnnotation("tok" + (++id), Uri.TOKEN, start, end);
               tmpa.addFeature(Features.Token.WORD, word);
+              tmpa.addFeature("Sentence Number(0 means Question)", numSentence + "");
+              numSentence++;
           }
         }
 
