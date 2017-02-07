@@ -121,6 +121,7 @@ public class TestEleAnnotation implements ProcessingService
           while ((line = bf.readLine()) != null) {
             String[] parts = line.split(" ", 3);
             if (parts[0].equals("Q")) {
+              parts = line.split(" ", 2);
               type = "Question";
               id = "Question";
               start = line.indexOf(parts[1]);
