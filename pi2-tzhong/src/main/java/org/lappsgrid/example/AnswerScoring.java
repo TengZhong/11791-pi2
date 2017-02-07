@@ -151,8 +151,8 @@ public class AnswerScoring implements ProcessingService
             
             Annotation ans_tmp = view3.newAnnotation(tmpSentence, Uri.TOKEN);
             ans_tmp.addFeature("gram1Score", gram1Score + "");
-            ans_tmp.addFeature("gram1Score", gram1Score + "");
-            ans_tmp.addFeature("gram1Score", gram1Score + "");
+            ans_tmp.addFeature("gram2Score", gram2Score + "");
+            ans_tmp.addFeature("gram3Score", gram3Score + "");
           }
         } catch (Exception e) {
           System.out.println(e.getStackTrace());
