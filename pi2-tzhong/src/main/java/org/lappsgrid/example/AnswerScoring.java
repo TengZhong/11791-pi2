@@ -127,6 +127,7 @@ public class AnswerScoring implements ProcessingService
           int len = annotations.size();
           for (int i = 1; i < len; i++) {
             Annotation tmpAnnotation = annotations.get(i);
+            String score = tmpAnnotation.getFeature("Score");
             String tmpSentence = tmpAnnotation.getId();
             Set<String> tmpGram1 = tmpAnnotation.getFeatureSet("1-gram");
             Set<String> tmpGram2 = tmpAnnotation.getFeatureSet("2-gram");
@@ -154,6 +155,7 @@ public class AnswerScoring implements ProcessingService
             ans_tmp.addFeature("gram2Score", gram2Score + "");
             ans_tmp.addFeature("gram3Score", gram3Score + "");
             ans_tmp.addFeature("sum of score", gram1Score + gram2Score + gram3Score + "");
+            ans_tmp.addFeature("Score", score);
           }
         } catch (Exception e) {
           System.out.println(e.getStackTrace());

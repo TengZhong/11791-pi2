@@ -1,8 +1,8 @@
 package org.lappsgrid.example;
 
 import org.lappsgrid.api.ProcessingService;
+import org.lappsgrid.discriminator.Discriminators.Uri;
 
-import static org.lappsgrid.discriminator.Discriminators.Uri;
 import org.lappsgrid.serialization.Data;
 import org.lappsgrid.serialization.DataContainer;
 import org.lappsgrid.serialization.Serializer;
@@ -15,7 +15,11 @@ import org.lappsgrid.vocabulary.Features;
 import org.lappsgrid.metadata.IOSpecification;
 import org.lappsgrid.metadata.ServiceMetadata;
 
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * For tutorial step #3, writing getMetadata()
@@ -103,9 +107,29 @@ public class Evaluation implements ProcessingService
             return new Data<String>(Uri.ERROR, message).asJson();
         }
 
+        
         // Step #4#5: Create a new View
         View view3 = container.getView(3); // from AnserScoring
         View view4 = container.newView();
+        List<Annotation> annotations = view3.getAnnotations();
+        int len = annotations.size(), N = 0; // N is number of correct documents
+        PriorityQueue<Annotation> pq = new PriorityQueue<Annotation>((Collection<? extends org.lappsgrid.serialization.lif.Annotation>) new myComparator());
+        for (int i = 1; i < len; i++) { // skip the question
+          Annotation tmpAnnotation = annotations.get(i);
+          if (Integer.parseInt(tmpAnnotation.getFeature("Score")) == 1) {
+            N++;
+          }
+          pq.offer(tmpAnnotation);
+        }
+        
+        float prec = 0; 
+        for (int i = 0; i < N; i++) {
+          Annotation tmp = pq.poll();
+          if (tmp.getFeature("Score").equals("1")) prec++;
+        }
+        
+        Annotation a = view4.newAnnotation("Precision at " + N, Uri.TOKEN);
+        a.addFeature("P@" + N, String.valueOf(prec / N));
         
 
         // Step #6: Update the view's metadata. Each view contains metadata about the
@@ -119,4 +143,24 @@ public class Evaluation implements ProcessingService
         // Step #8: Serialize the data object and return the JSON.
         return data.asPrettyJson();
     }
+    
+    
+    
+    private class myComparator<Annotation> implements Comparator<Annotation> {
+      @Override
+      public int compare(Annotation a1, Annotation a2) {
+        float f1 = Float.parseFloat(((org.lappsgrid.serialization.lif.Annotation) a1).getFeature("sum of score"));
+        float f2 = Float.parseFloat(((org.lappsgrid.serialization.lif.Annotation) a2).getFeature("sum of score"));
+        if (f1 < f2) {
+          return 1;
+        } else if (f1 > f2) {
+          return -1;
+        } else {
+          return 0;
+        }
+      }
+    }
+    
+    
 }
+

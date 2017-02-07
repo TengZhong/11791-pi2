@@ -113,6 +113,7 @@ public class NGramAnnotation implements ProcessingService
         int numSentence = 0;
         for (Annotation a: annotations) {
           String sentence = a.getFeature("Sentence").trim().replaceAll("[-+.^:,?]", "");
+          String score = a.getFeature("Score");
           String[] words = sentence.split("\\s+");
           HashSet<String> gram1 = new HashSet<>();
           HashSet<String> gram2 = new HashSet<>();
@@ -136,6 +137,7 @@ public class NGramAnnotation implements ProcessingService
           tmpa.addFeature("1-gram", gram1);
           tmpa.addFeature("2-gram", gram2);
           tmpa.addFeature("3-gram", gram3);
+          tmpa.addFeature("Score", score);
         }        
         
         // Step #6: Update the view's metadata. Each view contains metadata about the
