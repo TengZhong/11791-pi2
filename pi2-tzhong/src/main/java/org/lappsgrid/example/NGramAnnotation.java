@@ -136,9 +136,7 @@ public class NGramAnnotation implements ProcessingService
           tmpa.addFeature("1-gram", gram1);
           tmpa.addFeature("2-gram", gram2);
           tmpa.addFeature("3-gram", gram3);
-        }
-
-        
+        }        
         
         // Step #6: Update the view's metadata. Each view contains metadata about the
         // annotations it contains, in particular the name of the tool that produced the
