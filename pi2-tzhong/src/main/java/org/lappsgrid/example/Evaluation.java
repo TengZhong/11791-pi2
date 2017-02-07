@@ -148,8 +148,6 @@ public class Evaluation implements ProcessingService
 
 }
 
-
-
 class myComparator implements Comparator<Annotation> {
   @Override
   public int compare(Annotation a1, Annotation a2) {
