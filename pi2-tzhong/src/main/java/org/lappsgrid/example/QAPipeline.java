@@ -93,7 +93,7 @@ public class QAPipeline extends Pipeline{
       pp.runPipeline();
       
       
-      String processedOutput = "";
+      String processedOutput = output;
       pp.writeOutput(outputPath, processedOutput);
     }
     
