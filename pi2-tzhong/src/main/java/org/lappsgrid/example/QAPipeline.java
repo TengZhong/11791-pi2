@@ -91,7 +91,7 @@ public class QAPipeline extends Pipeline{
     String processedOutput = "";
     
     
-    pp.writeOutput(outputPath, output);
+    pp.writeOutput(outputPath, processedOutput);
   }
 
 }
