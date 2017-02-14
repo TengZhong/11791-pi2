@@ -1,5 +1,11 @@
 package org.lappsgrid.example;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
+import org.lappsgrid.api.WebService;
+
+
 public class QAPipeline extends Pipeline{
   
   /*
@@ -25,9 +31,17 @@ public class QAPipeline extends Pipeline{
      * The Pipeline returns a JSON String
      * Write the output in the desired format using this method
      */
+    BufferedWriter bw;
+    try {
+      bw = new BufferedWriter(new FileWriter(filePath));
+      bw.write(outputJson);
+      bw.close();
+    } catch (Exception ex) {
+      System.out.println(ex.getStackTrace());
+    } 
   } 
   
-  @Override
+  
   void runPipeline() {
     /*
      * One possible implementation could be this
@@ -40,6 +54,13 @@ public class QAPipeline extends Pipeline{
      *  }
      *  setOutput(intermediateOutput);
      */
+    String stageInput = getPipelineInput();
+    String intermediateOutput = "";
+    for(WebService service: getPipelineStages()) {
+      intermediateOutput = service.execute(stageInput);
+      stageInput = intermediateOutput;
+    }
+    setOutput(intermediateOutput);
   }
   
   public static void main(String[] args) {
@@ -59,7 +80,15 @@ public class QAPipeline extends Pipeline{
      *    - call the runPipeline() method
      * 3) Implement the writeOutput() method 
      */
-
+    setPipelineInput(inputPath);
+    QAPipeline pp = new QAPipeline();
+    pp.addService(new TestEleAnnotation());
+    pp.addService(new TokenAnnotation());
+    pp.addService(new NGramAnnotation());
+    pp.addService(new AnswerScoring());
+    pp.addService(new Evaluation());
+    pp.runPipeline();
+    pp.writeOutput(outputPath, output);
   }
 
 }

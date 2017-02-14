@@ -1,5 +1,6 @@
 package org.lappsgrid.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.lappsgrid.api.WebService;
@@ -8,31 +9,31 @@ import org.lappsgrid.serialization.Data;
 
 public abstract class Pipeline {
   
-  private List<WebService> Stages;
-  private Data input;
-  private String output;
+  private static List<WebService> Stages = new ArrayList<WebService>();
+  private static Data input;
+  public static String output;
   
-  public List<WebService> getPipelineStages()
+  public static List<WebService> getPipelineStages()
   {
     return Stages;
   }
   
-  public void addService(WebService newService)
+  public static void addService(WebService newService)
   {
     Stages.add(newService);
   }
   
-  public void setPipelineInput(String docText)
+  public static void setPipelineInput(String docText)
   {
     input = new Data<>(Uri.TEXT, docText);
   }
   
-  public String getPipelineInput()
+  public static String getPipelineInput()
   {
     return input.asJson();
   }
   
-  private void setOutput(String jsonText)
+  protected static void setOutput(String jsonText)
   {
     output = jsonText;
   }
