@@ -88,6 +88,9 @@ public class QAPipeline extends Pipeline{
     pp.addService(new AnswerScoring());
     pp.addService(new Evaluation());
     pp.runPipeline();
+    String processedOutput = "";
+    
+    
     pp.writeOutput(outputPath, output);
   }
 
