@@ -1,6 +1,7 @@
 package org.lappsgrid.example;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 
 import org.lappsgrid.api.WebService;
@@ -80,18 +81,32 @@ public class QAPipeline extends Pipeline{
      *    - call the runPipeline() method
      * 3) Implement the writeOutput() method 
      */
-    setPipelineInput(inputPath);
-    QAPipeline pp = new QAPipeline();
-    pp.addService(new TestEleAnnotation());
-    pp.addService(new TokenAnnotation());
-    pp.addService(new NGramAnnotation());
-    pp.addService(new AnswerScoring());
-    pp.addService(new Evaluation());
-    pp.runPipeline();
-    String processedOutput = "";
+    File inputDir = new File(inputPath);
+    for (File file: inputDir.listFiles()) {
+      setPipelineInput(file.getAbsolutePath());
+      QAPipeline pp = new QAPipeline();
+      pp.addService(new TestEleAnnotation());
+      pp.addService(new TokenAnnotation());
+      pp.addService(new NGramAnnotation());
+      pp.addService(new AnswerScoring());
+      pp.addService(new Evaluation());
+      pp.runPipeline();
+      
+      
+      String processedOutput = "";
+      pp.writeOutput(outputPath, processedOutput);
+    }
+    
+//    setPipelineInput(inputPath);
+//    QAPipeline pp = new QAPipeline();
+//    pp.addService(new TestEleAnnotation());
+//    pp.addService(new TokenAnnotation());
+//    pp.addService(new NGramAnnotation());
+//    pp.addService(new AnswerScoring());
+//    pp.addService(new Evaluation());
+//    pp.runPipeline();
     
     
-    pp.writeOutput(outputPath, processedOutput);
   }
 
 }
