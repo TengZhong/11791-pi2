@@ -103,7 +103,6 @@ public class QAPipeline extends Pipeline{
       pp.addService(new Evaluation());
       pp.runPipeline();
       
-      
       Data data = Serializer.parse(getOutput(), Data.class);
       Container container = new Container((Map) data.getPayload());
       View view4 = container.getView(4); // Evaluation
@@ -117,33 +116,20 @@ public class QAPipeline extends Pipeline{
       
       // extract scores for all answers
       List<Annotation> annotations3 = view3.getAnnotations();
-      PriorityQueue<String> pq = new PriorityQueue<String>((Collection<? extends java.lang.String>) new scoreComparator());
-      
+      PriorityQueue<String> pq = new PriorityQueue<String>(annotations3.size(), new scoreComparator());      
       for (int i = 1; i < annotations3.size(); i++) { // the first is question
         String typeAndScore = annotations3.get(i).getFeature("thisType") + " " +
                 annotations3.get(i).getFeature("sum of score");
         pq.offer(typeAndScore);
-      }
-      
+      }      
       while (pq.size() > 0) {
         processedOutput += pq.poll() + "\n";
       }
       
-      
+      // write to output
       pp.writeOutput(outputPath, processedOutput);
       
-
-    }
-    
-//    setPipelineInput(inputPath);
-//    QAPipeline pp = new QAPipeline();
-//    pp.addService(new TestEleAnnotation());
-//    pp.addService(new TokenAnnotation());
-//    pp.addService(new NGramAnnotation());
-//    pp.addService(new AnswerScoring());
-//    pp.addService(new Evaluation());
-//    pp.runPipeline();
-    
+    }   
     
   }
 }
@@ -153,6 +139,6 @@ class scoreComparator<String> implements Comparator<String> {
   public int compare(String s1, String s2) {
     Double score1 = Double.parseDouble(((java.lang.String) s1).split(" ")[1]);
     Double score2 = Double.parseDouble(((java.lang.String) s2).split(" ")[1]);
-    return Double.compare(score1, score2);
+    return -1 * Double.compare(score1, score2);
   }
 }
