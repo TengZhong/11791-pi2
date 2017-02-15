@@ -3,16 +3,22 @@ package org.lappsgrid.example;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 import org.lappsgrid.api.WebService;
 import org.lappsgrid.serialization.Data;
 import org.lappsgrid.serialization.Serializer;
+import org.lappsgrid.serialization.lif.Annotation;
 import org.lappsgrid.serialization.lif.Container;
 import org.lappsgrid.serialization.lif.View;
 
 
 public class QAPipeline extends Pipeline{
+  
   
   /*
    * Treat this as the entry point to your Web Service pipeline.
@@ -100,10 +106,30 @@ public class QAPipeline extends Pipeline{
       
       Data data = Serializer.parse(getOutput(), Data.class);
       Container container = new Container((Map) data.getPayload());
-      View view = container.getView(4);
-      
-      
+      View view4 = container.getView(4); // Evaluation
+      View view3 = container.getView(3); // AnswerScoring
       String processedOutput = "";
+      
+      // extract P@N
+      List<Annotation> annotations4 = view4.getAnnotations();
+      String PAtN = annotations4.get(0).getFeature("P@N"); // we use P@3
+      processedOutput = PAtN + "\n";
+      
+      // extract scores for all answers
+      List<Annotation> annotations3 = view3.getAnnotations();
+      PriorityQueue<String> pq = new PriorityQueue<String>((Collection<? extends java.lang.String>) new scoreComparator());
+      
+      for (int i = 1; i < annotations3.size(); i++) { // the first is question
+        String typeAndScore = annotations3.get(i).getFeature("thisType") + " " +
+                annotations3.get(i).getFeature("sum of score");
+        pq.offer(typeAndScore);
+      }
+      
+      while (pq.size() > 0) {
+        processedOutput += pq.poll() + "\n";
+      }
+      
+      
       pp.writeOutput(outputPath, processedOutput);
       
 
@@ -120,5 +146,13 @@ public class QAPipeline extends Pipeline{
     
     
   }
+}
 
+
+class scoreComparator<String> implements Comparator<String> {
+  public int compare(String s1, String s2) {
+    Double score1 = Double.parseDouble(((java.lang.String) s1).split(" ")[1]);
+    Double score2 = Double.parseDouble(((java.lang.String) s2).split(" ")[1]);
+    return Double.compare(score1, score2);
+  }
 }

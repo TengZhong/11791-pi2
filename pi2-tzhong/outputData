@@ -23,7 +23,8 @@
         "features" : {
           "Type" : "Question",
           "Sentence" : "John loves Mary? ",
-          "Score" : "-1"
+          "Score" : "-1",
+          "thisType" : "Question"
         }
       }, {
         "id" : "Answer1",
@@ -33,7 +34,8 @@
         "features" : {
           "Type" : "Answer",
           "Sentence" : "John loves Mary with all his heart. ",
-          "Score" : "1"
+          "Score" : "1",
+          "thisType" : "Answer1"
         }
       }, {
         "id" : "Answer2",
@@ -43,7 +45,8 @@
         "features" : {
           "Type" : "Answer",
           "Sentence" : "Mary is dearly loved by John. ",
-          "Score" : "1"
+          "Score" : "1",
+          "thisType" : "Answer2"
         }
       }, {
         "id" : "Answer3",
@@ -53,7 +56,8 @@
         "features" : {
           "Type" : "Answer",
           "Sentence" : "Mary doesn't love John. ",
-          "Score" : "0"
+          "Score" : "0",
+          "thisType" : "Answer3"
         }
       }, {
         "id" : "Answer4",
@@ -63,7 +67,8 @@
         "features" : {
           "Type" : "Answer",
           "Sentence" : "John doesn't love Mary. ",
-          "Score" : "0"
+          "Score" : "0",
+          "thisType" : "Answer4"
         }
       }, {
         "id" : "Answer5",
@@ -73,7 +78,8 @@
         "features" : {
           "Type" : "Answer",
           "Sentence" : "John loves Mary.",
-          "Score" : "1"
+          "Score" : "1",
+          "thisType" : "Answer5"
         }
       } ]
     }, {
@@ -347,7 +353,8 @@
           "1-gram" : [ "loves", "John", "Mary" ],
           "2-gram" : [ "John loves", "loves Mary" ],
           "3-gram" : [ "John loves Mary" ],
-          "Score" : "-1"
+          "Score" : "-1",
+          "thisType" : "Question"
         }
       }, {
         "id" : "John loves Mary with all his heart",
@@ -358,7 +365,8 @@
           "1-gram" : [ "all", "with", "his", "loves", "John", "heart", "Mary" ],
           "2-gram" : [ "his heart", "with all", "John loves", "loves Mary", "Mary with", "all his" ],
           "3-gram" : [ "all his heart", "John loves Mary", "Mary with all", "with all his", "loves Mary with" ],
-          "Score" : "1"
+          "Score" : "1",
+          "thisType" : "Answer1"
         }
       }, {
         "id" : "Mary is dearly loved by John",
@@ -369,7 +377,8 @@
           "1-gram" : [ "loved", "by", "John", "is", "dearly", "Mary" ],
           "2-gram" : [ "is dearly", "by John", "Mary is", "loved by", "dearly loved" ],
           "3-gram" : [ "loved by John", "dearly loved by", "is dearly loved", "Mary is dearly" ],
-          "Score" : "1"
+          "Score" : "1",
+          "thisType" : "Answer2"
         }
       }, {
         "id" : "Mary doesn't love John",
@@ -380,7 +389,8 @@
           "1-gram" : [ "love", "John", "doesn't", "Mary" ],
           "2-gram" : [ "doesn't love", "love John", "Mary doesn't" ],
           "3-gram" : [ "doesn't love John", "Mary doesn't love" ],
-          "Score" : "0"
+          "Score" : "0",
+          "thisType" : "Answer3"
         }
       }, {
         "id" : "John doesn't love Mary",
@@ -391,7 +401,8 @@
           "1-gram" : [ "love", "John", "doesn't", "Mary" ],
           "2-gram" : [ "doesn't love", "love Mary", "John doesn't" ],
           "3-gram" : [ "doesn't love Mary", "John doesn't love" ],
-          "Score" : "0"
+          "Score" : "0",
+          "thisType" : "Answer4"
         }
       }, {
         "id" : "John loves Mary",
@@ -402,7 +413,8 @@
           "1-gram" : [ "loves", "John", "Mary" ],
           "2-gram" : [ "John loves", "loves Mary" ],
           "3-gram" : [ "John loves Mary" ],
-          "Score" : "1"
+          "Score" : "1",
+          "thisType" : "Answer5"
         }
       } ]
     }, {
@@ -434,7 +446,8 @@
           "gram2Score" : "0.33333334",
           "gram3Score" : "0.2",
           "sum of score" : "0.96190476",
-          "Score" : "1"
+          "Score" : "1",
+          "thisType" : "Answer1"
         }
       }, {
         "id" : "Mary is dearly loved by John",
@@ -446,7 +459,8 @@
           "gram2Score" : "0.0",
           "gram3Score" : "0.0",
           "sum of score" : "0.2857143",
-          "Score" : "1"
+          "Score" : "1",
+          "thisType" : "Answer2"
         }
       }, {
         "id" : "Mary doesn't love John",
@@ -458,7 +472,8 @@
           "gram2Score" : "0.0",
           "gram3Score" : "0.0",
           "sum of score" : "0.4",
-          "Score" : "0"
+          "Score" : "0",
+          "thisType" : "Answer3"
         }
       }, {
         "id" : "John doesn't love Mary",
@@ -470,7 +485,8 @@
           "gram2Score" : "0.0",
           "gram3Score" : "0.0",
           "sum of score" : "0.4",
-          "Score" : "0"
+          "Score" : "0",
+          "thisType" : "Answer4"
         }
       }, {
         "id" : "John loves Mary",
@@ -482,7 +498,8 @@
           "gram2Score" : "1.0",
           "gram3Score" : "1.0",
           "sum of score" : "3.0",
-          "Score" : "1"
+          "Score" : "1",
+          "thisType" : "Answer5"
         }
       } ]
     }, {

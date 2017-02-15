@@ -113,6 +113,7 @@ public class NGramAnnotation implements ProcessingService
         List<Annotation> annotations = view.getAnnotations();
         int numSentence = 0;
         for (Annotation a: annotations) {
+          String thisType = a.getFeature("thisType");
           String sentence = a.getFeature("Sentence").trim().replaceAll("[-+.^:,?]", "");
           String score = a.getFeature("Score");
           String[] words = sentence.split("\\s+");
@@ -139,6 +140,7 @@ public class NGramAnnotation implements ProcessingService
           tmpa.addFeature("2-gram", gram2);
           tmpa.addFeature("3-gram", gram3);
           tmpa.addFeature("Score", score);
+          tmpa.addFeature("thisType", thisType);
         }        
         
         // Step #6: Update the view's metadata. Each view contains metadata about the

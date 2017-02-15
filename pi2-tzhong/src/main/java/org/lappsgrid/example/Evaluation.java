@@ -131,7 +131,8 @@ public class Evaluation implements ProcessingService
         }
         
         Annotation a = view4.newAnnotation("Precision at " + N, Uri.TOKEN);
-        a.addFeature("P@" + N, String.valueOf(prec / N));
+        a.addFeature("P@N", String.valueOf(prec / N));
+        a.addFeature("N", N + "");
         
 
         // Step #6: Update the view's metadata. Each view contains metadata about the
