@@ -143,6 +143,7 @@ public class TestEleAnnotation implements ProcessingService
               a.addFeature("Sentence", parts[2]);
             }
             a.addFeature("Score", score);
+            a.addFeature("thisType", id);
           }
         } catch (Exception e) {
           // TODO Auto-generated catch block

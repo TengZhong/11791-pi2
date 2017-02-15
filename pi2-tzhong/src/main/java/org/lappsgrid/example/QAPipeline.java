@@ -3,8 +3,13 @@ package org.lappsgrid.example;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.Map;
 
 import org.lappsgrid.api.WebService;
+import org.lappsgrid.serialization.Data;
+import org.lappsgrid.serialization.Serializer;
+import org.lappsgrid.serialization.lif.Container;
+import org.lappsgrid.serialization.lif.View;
 
 
 public class QAPipeline extends Pipeline{
@@ -93,8 +98,15 @@ public class QAPipeline extends Pipeline{
       pp.runPipeline();
       
       
-      String processedOutput = output;
+      Data data = Serializer.parse(getOutput(), Data.class);
+      Container container = new Container((Map) data.getPayload());
+      View view = container.getView(4);
+      
+      
+      String processedOutput = "";
       pp.writeOutput(outputPath, processedOutput);
+      
+
     }
     
 //    setPipelineInput(inputPath);

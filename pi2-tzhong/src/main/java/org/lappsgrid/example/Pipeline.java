@@ -38,7 +38,7 @@ public abstract class Pipeline {
     output = jsonText;
   }
   
-  public String getOutput()
+  public static String getOutput()
   {
     return output;
   }

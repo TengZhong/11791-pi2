@@ -1,0 +1,509 @@
+{
+  "discriminator" : "http://vocab.lappsgrid.org/ns/media/jsonld#lif",
+  "payload" : {
+    "@context" : "http://vocab.lappsgrid.org/context-1.0.0.jsonld",
+    "metadata" : { },
+    "text" : {
+      "@value" : "/Users/zhongteng/git/11791-pi2/pi2-tzhong/src/main/resources/inputData/q001.txt"
+    },
+    "views" : [ {
+      "metadata" : {
+        "contains" : {
+          "http://vocab.lappsgrid.org/Token" : {
+            "producer" : "org.lappsgrid.example.TestEleAnnotation",
+            "type" : "TestEleAnnotation"
+          }
+        }
+      },
+      "annotations" : [ {
+        "id" : "Question",
+        "start" : 2,
+        "end" : 19,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "Type" : "Question",
+          "Sentence" : "John loves Mary? ",
+          "Score" : "-1"
+        }
+      }, {
+        "id" : "Answer1",
+        "start" : 5,
+        "end" : 41,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "Type" : "Answer",
+          "Sentence" : "John loves Mary with all his heart. ",
+          "Score" : "1"
+        }
+      }, {
+        "id" : "Answer2",
+        "start" : 5,
+        "end" : 35,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "Type" : "Answer",
+          "Sentence" : "Mary is dearly loved by John. ",
+          "Score" : "1"
+        }
+      }, {
+        "id" : "Answer3",
+        "start" : 5,
+        "end" : 29,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "Type" : "Answer",
+          "Sentence" : "Mary doesn't love John. ",
+          "Score" : "0"
+        }
+      }, {
+        "id" : "Answer4",
+        "start" : 5,
+        "end" : 29,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "Type" : "Answer",
+          "Sentence" : "John doesn't love Mary. ",
+          "Score" : "0"
+        }
+      }, {
+        "id" : "Answer5",
+        "start" : 5,
+        "end" : 21,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "Type" : "Answer",
+          "Sentence" : "John loves Mary.",
+          "Score" : "1"
+        }
+      } ]
+    }, {
+      "metadata" : {
+        "contains" : {
+          "http://vocab.lappsgrid.org/Token" : {
+            "producer" : "org.lappsgrid.example.TokenAnnotation",
+            "type" : "TokenAnnotation"
+          }
+        }
+      },
+      "annotations" : [ {
+        "id" : "tok0",
+        "start" : 0,
+        "end" : 4,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "John",
+          "Sentence Number(0 means Question)" : "0"
+        }
+      }, {
+        "id" : "tok1",
+        "start" : 5,
+        "end" : 10,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "loves",
+          "Sentence Number(0 means Question)" : "0"
+        }
+      }, {
+        "id" : "tok2",
+        "start" : 11,
+        "end" : 15,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "Mary",
+          "Sentence Number(0 means Question)" : "0"
+        }
+      }, {
+        "id" : "tok0",
+        "start" : 0,
+        "end" : 4,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "John",
+          "Sentence Number(0 means Question)" : "1"
+        }
+      }, {
+        "id" : "tok1",
+        "start" : 5,
+        "end" : 10,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "loves",
+          "Sentence Number(0 means Question)" : "1"
+        }
+      }, {
+        "id" : "tok2",
+        "start" : 11,
+        "end" : 15,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "Mary",
+          "Sentence Number(0 means Question)" : "1"
+        }
+      }, {
+        "id" : "tok3",
+        "start" : 16,
+        "end" : 20,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "with",
+          "Sentence Number(0 means Question)" : "1"
+        }
+      }, {
+        "id" : "tok4",
+        "start" : 21,
+        "end" : 24,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "all",
+          "Sentence Number(0 means Question)" : "1"
+        }
+      }, {
+        "id" : "tok5",
+        "start" : 25,
+        "end" : 28,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "his",
+          "Sentence Number(0 means Question)" : "1"
+        }
+      }, {
+        "id" : "tok6",
+        "start" : 29,
+        "end" : 34,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "heart",
+          "Sentence Number(0 means Question)" : "1"
+        }
+      }, {
+        "id" : "tok0",
+        "start" : 0,
+        "end" : 4,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "Mary",
+          "Sentence Number(0 means Question)" : "2"
+        }
+      }, {
+        "id" : "tok1",
+        "start" : 5,
+        "end" : 7,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "is",
+          "Sentence Number(0 means Question)" : "2"
+        }
+      }, {
+        "id" : "tok2",
+        "start" : 8,
+        "end" : 14,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "dearly",
+          "Sentence Number(0 means Question)" : "2"
+        }
+      }, {
+        "id" : "tok3",
+        "start" : 15,
+        "end" : 20,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "loved",
+          "Sentence Number(0 means Question)" : "2"
+        }
+      }, {
+        "id" : "tok4",
+        "start" : 21,
+        "end" : 23,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "by",
+          "Sentence Number(0 means Question)" : "2"
+        }
+      }, {
+        "id" : "tok5",
+        "start" : 24,
+        "end" : 28,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "John",
+          "Sentence Number(0 means Question)" : "2"
+        }
+      }, {
+        "id" : "tok0",
+        "start" : 0,
+        "end" : 4,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "Mary",
+          "Sentence Number(0 means Question)" : "3"
+        }
+      }, {
+        "id" : "tok1",
+        "start" : 5,
+        "end" : 12,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "doesn't",
+          "Sentence Number(0 means Question)" : "3"
+        }
+      }, {
+        "id" : "tok2",
+        "start" : 13,
+        "end" : 17,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "love",
+          "Sentence Number(0 means Question)" : "3"
+        }
+      }, {
+        "id" : "tok3",
+        "start" : 18,
+        "end" : 22,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "John",
+          "Sentence Number(0 means Question)" : "3"
+        }
+      }, {
+        "id" : "tok0",
+        "start" : 0,
+        "end" : 4,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "John",
+          "Sentence Number(0 means Question)" : "4"
+        }
+      }, {
+        "id" : "tok1",
+        "start" : 5,
+        "end" : 12,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "doesn't",
+          "Sentence Number(0 means Question)" : "4"
+        }
+      }, {
+        "id" : "tok2",
+        "start" : 13,
+        "end" : 17,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "love",
+          "Sentence Number(0 means Question)" : "4"
+        }
+      }, {
+        "id" : "tok3",
+        "start" : 18,
+        "end" : 22,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "Mary",
+          "Sentence Number(0 means Question)" : "4"
+        }
+      }, {
+        "id" : "tok0",
+        "start" : 0,
+        "end" : 4,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "John",
+          "Sentence Number(0 means Question)" : "5"
+        }
+      }, {
+        "id" : "tok1",
+        "start" : 5,
+        "end" : 10,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "loves",
+          "Sentence Number(0 means Question)" : "5"
+        }
+      }, {
+        "id" : "tok2",
+        "start" : 11,
+        "end" : 15,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "word" : "Mary",
+          "Sentence Number(0 means Question)" : "5"
+        }
+      } ]
+    }, {
+      "metadata" : {
+        "contains" : {
+          "http://vocab.lappsgrid.org/Token" : {
+            "producer" : "org.lappsgrid.example.NGramAnnotation",
+            "type" : "N-Gram Annotation"
+          }
+        }
+      },
+      "annotations" : [ {
+        "id" : "John loves Mary",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "1-gram" : [ "loves", "John", "Mary" ],
+          "2-gram" : [ "John loves", "loves Mary" ],
+          "3-gram" : [ "John loves Mary" ],
+          "Score" : "-1"
+        }
+      }, {
+        "id" : "John loves Mary with all his heart",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "1-gram" : [ "all", "with", "his", "loves", "John", "heart", "Mary" ],
+          "2-gram" : [ "his heart", "with all", "John loves", "loves Mary", "Mary with", "all his" ],
+          "3-gram" : [ "all his heart", "John loves Mary", "Mary with all", "with all his", "loves Mary with" ],
+          "Score" : "1"
+        }
+      }, {
+        "id" : "Mary is dearly loved by John",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "1-gram" : [ "loved", "by", "John", "is", "dearly", "Mary" ],
+          "2-gram" : [ "is dearly", "by John", "Mary is", "loved by", "dearly loved" ],
+          "3-gram" : [ "loved by John", "dearly loved by", "is dearly loved", "Mary is dearly" ],
+          "Score" : "1"
+        }
+      }, {
+        "id" : "Mary doesn't love John",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "1-gram" : [ "love", "John", "doesn't", "Mary" ],
+          "2-gram" : [ "doesn't love", "love John", "Mary doesn't" ],
+          "3-gram" : [ "doesn't love John", "Mary doesn't love" ],
+          "Score" : "0"
+        }
+      }, {
+        "id" : "John doesn't love Mary",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "1-gram" : [ "love", "John", "doesn't", "Mary" ],
+          "2-gram" : [ "doesn't love", "love Mary", "John doesn't" ],
+          "3-gram" : [ "doesn't love Mary", "John doesn't love" ],
+          "Score" : "0"
+        }
+      }, {
+        "id" : "John loves Mary",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "1-gram" : [ "loves", "John", "Mary" ],
+          "2-gram" : [ "John loves", "loves Mary" ],
+          "3-gram" : [ "John loves Mary" ],
+          "Score" : "1"
+        }
+      } ]
+    }, {
+      "metadata" : {
+        "contains" : {
+          "http://vocab.lappsgrid.org/Token" : {
+            "producer" : "org.lappsgrid.example.AnswerScoring",
+            "type" : "AnswerScoring"
+          }
+        }
+      },
+      "annotations" : [ {
+        "id" : "John loves Mary",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "qGram1" : [ "loves", "John", "Mary" ],
+          "qGram2" : [ "John loves", "loves Mary" ],
+          "qGram3" : [ "John loves Mary" ]
+        }
+      }, {
+        "id" : "John loves Mary with all his heart",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "gram1Score" : "0.42857143",
+          "gram2Score" : "0.33333334",
+          "gram3Score" : "0.2",
+          "sum of score" : "0.96190476",
+          "Score" : "1"
+        }
+      }, {
+        "id" : "Mary is dearly loved by John",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "gram1Score" : "0.2857143",
+          "gram2Score" : "0.0",
+          "gram3Score" : "0.0",
+          "sum of score" : "0.2857143",
+          "Score" : "1"
+        }
+      }, {
+        "id" : "Mary doesn't love John",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "gram1Score" : "0.4",
+          "gram2Score" : "0.0",
+          "gram3Score" : "0.0",
+          "sum of score" : "0.4",
+          "Score" : "0"
+        }
+      }, {
+        "id" : "John doesn't love Mary",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "gram1Score" : "0.4",
+          "gram2Score" : "0.0",
+          "gram3Score" : "0.0",
+          "sum of score" : "0.4",
+          "Score" : "0"
+        }
+      }, {
+        "id" : "John loves Mary",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "gram1Score" : "1.0",
+          "gram2Score" : "1.0",
+          "gram3Score" : "1.0",
+          "sum of score" : "3.0",
+          "Score" : "1"
+        }
+      } ]
+    }, {
+      "metadata" : {
+        "contains" : {
+          "http://vocab.lappsgrid.org/Token" : {
+            "producer" : "org.lappsgrid.example.Evaluation",
+            "type" : "Evaluation"
+          }
+        }
+      },
+      "annotations" : [ {
+        "id" : "Precision at 3",
+        "start" : -1,
+        "end" : -1,
+        "@type" : "http://vocab.lappsgrid.org/Token",
+        "features" : {
+          "P@3" : "0.6666667"
+        }
+      } ]
+    } ]
+  },
+  "parameters" : { }
+}
