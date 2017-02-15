@@ -129,8 +129,7 @@ public class QAPipeline extends Pipeline{
       // write to output
       pp.writeOutput(outputPath, processedOutput);
       
-    }   
-    
+    }       
   }
 }
 
